@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Was ist Vibe-Coding? | Dramatic Light Mode</title>
+  
+  <!-- Google Fonts importieren: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* DESIGN TOKENS (Dramatic Design System - Light Mode) */
+    :root {
+      /* Base & Surfaces */
+      --color-surface: #FAFAFA;
+      --color-surface-card: #FFFFFF;
+      --color-surface-border: #E4E4E7;
+      
+      /* Typography Colors */
+      --color-text: #09090B;
+      --color-text-muted: #52525B;
+
+      /* Brand Accent Colors */
+      --color-primary: #7C3AED;
+      --color-secondary: #E11D48;
+      --color-success: #16A34A;
+      --color-warning: #D97706;
+      --color-danger: #DC2626;
+
+      /* Code / Dark Accent Area */
+      --color-code-bg: #18181B;
+      --color-code-text: #A78BFA;
+
+      /* Typography Families */
+      --font-primary: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+
+      /* Focus State */
+      --focus-outline: 2px solid #7C3AED;
+      --focus-offset: 4px;
+    }
+
+    /* GLOBAL RESET & BASE STYLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0 16px 24px 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ACCESSIBILITY FOCUS STATES */
+    a:focus-visible,
+    button:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-offset);
+    }
+
+    /* NAVIGATION BAR */
+    nav.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 2px solid var(--color-surface-border);
+      position: sticky;
+      top: 0;
+      background-color: rgba(250, 250, 250, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-text);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand span {
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-btn {
+      display: inline-block;
+      background-color: var(--color-text);
+      color: var(--color-surface);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 12px;
+      }
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+      .nav-btn {
+        display: none;
+      }
+    }
+
+    /* TYPOGRAPHY UTILITIES */
+    h1, h2, h3 {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .badge-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-secondary);
+      background: rgba(225, 29, 72, 0.08);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-secondary);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    /* HERO SECTION */
+    header.hero {
+      padding: 64px 0 48px 0;
+      border-bottom: 2px solid var(--color-surface-border);
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    header.hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 24px;
+      color: var(--color-text);
+      background: linear-gradient(135deg, var(--color-text) 50%, var(--color-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header.hero p.lead {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 750px;
+      font-weight: 400;
+    }
+
+    /* DRAMATIC GRID LAYOUT */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
+    /* CARDS & PANELS */
+    .card {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);
+    }
+
+    .card.accent-border {
+      border-left: 5px solid var(--color-primary);
+    }
+
+    .card.secondary-border {
+      border-left: 5px solid var(--color-secondary);
+    }
+
+    .card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 16px;
+      color: var(--color-text);
+    }
+
+    .card p {
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+    }
+
+    .card p strong {
+      color: var(--color-text);
+    }
+
+    /* CODE BLOCK / COMPARISON BOX */
+    .mono-box {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      background-color: var(--color-code-bg);
+      border: 1px solid #27272A;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      color: var(--color-code-text);
+      margin-top: 16px;
+    }
+
+    /* FEATURE LIST */
+    .feature-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .feature-list li::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      color: var(--color-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* CTA / INTERACTION BUTTON */
+    .btn-action {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      font-family: var(--font-primary);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      margin-top: 16px;
+    }
+
+    .btn-action:hover {
+      background-color: #6D28D9;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 2px solid var(--color-surface-border);
+      padding: 32px 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION MENU -->
+  <nav class="navbar" aria-label="Hauptnavigation">
+    <a href="#" class="nav-brand">// Vibe<span>Coding</span></a>
+    
+    <ul class="nav-links">
+      <li><a href="#konzept">Konzept</a></li>
+      <li><a href="#vorteile">Vorteile</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+    </ul>
+
+    <a href="#vorteile" class="nav-btn">Jetzt Starten</a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <span class="badge-label">Paradigm Shift // AI Development</span>
+    <h1>Was ist eigentlich Vibe-Coding?</h1>
+    <p class="lead">
+      <strong>Vibe-Coding</strong> beschreibt eine intuitive Form der Softwareentwicklung, bei der nicht mehr Zeile für Zeile programmiert wird, sondern KI-Modelle durch Wünsche, Intuition und Feedback gesteuert werden.
+    </p>
+  </header>
+
+  <!-- MAIN CONTENT GRID -->
+  <main class="grid-container">
+    
+    <!-- LEFT COLUMN: DEEP DIVE -->
+    <section id="konzept" class="card accent-border">
+      <span class="badge-label">Konzept &amp; Philosophie</span>
+      <h2>Code by Intuition</h2>
+      <p>
+        Der Begriff wurde von <strong>Andrej Karpathy</strong> geprägt. Beim Vibe-Coding beschreibt der Entwickler oder Anwender in natürlicher Sprache, was das Programm tun soll. Die KI generiert den Code, testet ihn und behebt Fehler weitgehend autonom.
+      </p>
+      <p>
+        Anstatt Syntax auswendig zu lernen oder händisch zu debuggen, bewegt man sich rein über das <em>„Gefühl“</em> (den Vibe) und das Ausprobieren der Anwendung. Der Mensch steuert die Vision, die KI übernimmt die Syntax.
+      </p>
+
+      <div id="workflow" class="mono-box">
+        &gt; Vibe-Coding Process Flow:<br>
+        1. Idea &rarr; Natural Language Prompt<br>
+        2. AI Agents &rarr; Generate Code &amp; Fix Bugs<br>
+        3. Human &rarr; Check the Vibe &amp; Iterate
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: ADVANTAGES & TOOLS -->
+    <aside id="vorteile" class="card secondary-border">
+      <span class="badge-label">Tools &amp; Kernelemente</span>
+      <h2>Warum der Hype?</h2>
+      <p>Moderne Agenten-Tools (wie Cursor, Claude oder Copilot) machen Vibe-Coding extrem schnell:</p>
+      
+      <ul class="feature-list">
+        <li><strong>Niedrige Einstiegshürde:</strong> Auch Nicht-Programmierer können funktionierende Software und Prototypen bauen.</li>
+        <li><strong>Fokus auf das Produkt:</strong> Man verbringt Zeit mit der Idee und UX, nicht mit Tipparbeit.</li>
+        <li><strong>Schnelles Feedback:</strong> Fehler werden im Dialog mit der KI iterativ gelöst.</li>
+      </ul>
+
+      <button class="btn-action" onclick="alert('Vibe-Coding aktiviert: Vertraue der KI und baue deine Idee!')">
+        Vibe Testen
+      </button>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>DESIGN SYSTEM: DRAMATIC // LIGHT MODE // WCAG 2.2 AA COMPLIANT</p>
+  </footer>
+
+</body>
+</html>
