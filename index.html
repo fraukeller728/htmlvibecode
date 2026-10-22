@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Von HTML zu Vibe-Coding</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#f5f5f7',
+                            card: 'rgba(255, 255, 255, 0.72)',
+                            cardHover: 'rgba(255, 255, 255, 0.85)',
+                            border: 'rgba(0, 0, 0, 0.08)',
+                            borderLight: 'rgba(255, 255, 255, 0.6)',
+                            text: '#1d1d1f',
+                            secondary: '#86868b',
+                            accent: '#0071e3',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apple Design Skill Rules & Glassmorphic Utilities */
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Translucent Glass Material */
+        .apple-glass {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .apple-glass-interactive {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.3s ease;
+        }
+
+        .apple-glass-interactive:hover {
+            background: rgba(255, 255, 255, 0.88);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 2px 6px 0 rgba(0, 0, 0, 0.03);
+        }
+
+        /* Response: Instant feedback on pointer down (scale down) */
+        .apple-glass-interactive:active, .apple-button:active {
+            transform: scale(0.975) translateY(0);
+            transition: transform 0.08s ease-out;
+        }
+
+        /* Typography - Optical sizing & tracking */
+        .apple-heading {
+            letter-spacing: -0.025em;
+            line-height: 1.08;
+        }
+
+        .apple-subheading {
+            letter-spacing: -0.01em;
+        }
+
+        /* Placeholder graphic styling */
+        .image-placeholder {
+            background: linear-gradient(135deg, rgba(240, 240, 245, 0.8) 0%, rgba(225, 225, 235, 0.5) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto selection:bg-apple-accent/10 selection:text-apple-accent">
+
+    <!-- Header / Hero Section -->
+    <header class="text-center pt-8 pb-12 sm:pt-16 sm:pb-16 max-w-3xl mx-auto">
+        <p class="text-xs sm:text-sm font-semibold tracking-wider text-apple-secondary uppercase mb-3">Evolution der Webentwicklung</p>
+        <h1 class="apple-heading text-4xl sm:text-6xl font-bold text-apple-text tracking-tight">
+            Von HTML zu Vibe-Coding
+        </h1>
+        <p class="apple-subheading mt-4 text-lg sm:text-xl text-apple-secondary font-normal leading-relaxed">
+            Eine Reise durch drei Epochen des Erstellens digitaler Erlebnisse.
+        </p>
+    </header>
+
+    <!-- Main Section: 3 Large Cards -->
+    <main class="w-full space-y-16">
+        <section aria-label="Epochen" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            
+            <!-- Card 1: HTML -->
+            <a href="html.html" class="apple-glass apple-glass-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full decoration-0 text-current overflow-hidden">
+                <div>
+                    <!-- Image Placeholder Container -->
+                    <div class="image-placeholder aspect-[4/3] rounded-2xl w-full mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-300">
+                        <svg class="w-12 h-12 text-apple-secondary/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                        <span class="text-xs font-medium text-apple-secondary/70">Bild-Platzhalter (HTML)</span>
+                    </div>
+
+                    <!-- Content -->
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-accent">Klassisch</span>
+                    <h2 class="apple-heading text-2xl font-bold text-apple-text mt-1 group-hover:text-apple-accent transition-colors">
+                        HTML
+                    </h2>
+                    <p class="text-sm text-apple-secondary mt-2 leading-relaxed">
+                        Das Fundament des Webs. Handgeschriebener Code, Struktur und zeitlose Standards.
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-4 border-t border-black/5 flex items-center text-sm font-medium text-apple-accent">
+                    <span>Mehr erfahren</span>
+                    <svg class="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Card 2: WordPress -->
+            <a href="wordpress.html" class="apple-glass apple-glass-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full decoration-0 text-current overflow-hidden">
+                <div>
+                    <!-- Image Placeholder Container -->
+                    <div class="image-placeholder aspect-[4/3] rounded-2xl w-full mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-300">
+                        <svg class="w-12 h-12 text-apple-secondary/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                        <span class="text-xs font-medium text-apple-secondary/70">Bild-Platzhalter (WordPress)</span>
+                    </div>
+
+                    <!-- Content -->
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-accent">CMS Ära</span>
+                    <h2 class="apple-heading text-2xl font-bold text-apple-text mt-1 group-hover:text-apple-accent transition-colors">
+                        WordPress
+                    </h2>
+                    <p class="text-sm text-apple-secondary mt-2 leading-relaxed">
+                        Baukasten & Content Management. Die Demokratisierung der Website-Erstellung.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-black/5 flex items-center text-sm font-medium text-apple-accent">
+                    <span>Mehr erfahren</span>
+                    <svg class="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Card 3: Vibe-Coding -->
+            <a href="vibe-coding.html" class="apple-glass apple-glass-interactive group rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full decoration-0 text-current overflow-hidden">
+                <div>
+                    <!-- Image Placeholder Container -->
+                    <div class="image-placeholder aspect-[4/3] rounded-2xl w-full mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-300">
+                        <svg class="w-12 h-12 text-apple-secondary/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <span class="text-xs font-medium text-apple-secondary/70">Bild-Platzhalter (Vibe-Coding)</span>
+                    </div>
+
+                    <!-- Content -->
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-accent">Zukunft</span>
+                    <h2 class="apple-heading text-2xl font-bold text-apple-text mt-1 group-hover:text-apple-accent transition-colors">
+                        Vibe-Coding
+                    </h2>
+                    <p class="text-sm text-apple-secondary mt-2 leading-relaxed">
+                        KI-gestützter Flow. Ideen direkt in funktionierenden Code übersetzen.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-black/5 flex items-center text-sm font-medium text-apple-accent">
+                    <span>Mehr erfahren</span>
+                    <svg class="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- Tutorial Section: 3 Instruction Buttons / Prominent Links -->
+        <section aria-label="Anleitungen" class="pt-8 border-t border-black/5">
+            <div class="mb-6 text-center sm:text-left">
+                <h3 class="apple-heading text-xl font-bold text-apple-text">Anleitungen & Tutorials</h3>
+                <p class="text-sm text-apple-secondary mt-1">Schritt-für-Schritt-Guides zu den verschiedenen Ansätzen</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Instruction Link 1 -->
+                <a href="anleitung-html.html" class="apple-button apple-glass p-4 rounded-2xl flex items-center justify-between group hover:bg-white/90 transition-all duration-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-xl bg-black/5 flex items-center justify-center text-apple-text group-hover:bg-apple-accent/10 group-hover:text-apple-accent transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-apple-text">Anleitung: HTML Grundlagen</span>
+                    </div>
+                    <svg class="w-4 h-4 text-apple-secondary group-hover:text-apple-accent group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+
+                <!-- Instruction Link 2 -->
+                <a href="anleitung-wordpress.html" class="apple-button apple-glass p-4 rounded-2xl flex items-center justify-between group hover:bg-white/90 transition-all duration-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-xl bg-black/5 flex items-center justify-center text-apple-text group-hover:bg-apple-accent/10 group-hover:text-apple-accent transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-apple-text">Anleitung: WordPress Setup</span>
+                    </div>
+                    <svg class="w-4 h-4 text-apple-secondary group-hover:text-apple-accent group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+
+                <!-- Instruction Link 3 -->
+                <a href="anleitung-vibe-coding.html" class="apple-button apple-glass p-4 rounded-2xl flex items-center justify-between group hover:bg-white/90 transition-all duration-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-xl bg-black/5 flex items-center justify-center text-apple-text group-hover:bg-apple-accent/10 group-hover:text-apple-accent transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-apple-text">Anleitung: Vibe-Coding Workflow</span>
+                    </div>
+                    <svg class="w-4 h-4 text-apple-secondary group-hover:text-apple-accent group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Minimal Footnote -->
+    <footer class="mt-20 text-center text-xs text-apple-secondary border-t border-black/5 pt-8">
+        <p>© 2026 Von HTML zu Vibe-Coding. Designed using Apple Design Principles.</p>
+    </footer>
+
+</body>
+</html>
