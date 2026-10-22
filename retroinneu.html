@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatik 9/10 – HTML 1999 vs. Heute</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 500: '#6366f1', 600: '#4f46e5' },
+                        accent: { cyan: '#06b6d4', pink: '#ec4899' }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons & Tailwind Play -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #090d16;
+            color: #f1f5f9;
+        }
+
+        /* Smooth Glass Effects */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090d16; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Glowing Background Lights -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-6 z-50 max-w-6xl mx-auto px-4 mb-12">
+        <nav class="glass-panel rounded-2xl p-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-white text-base tracking-tight">Informatik 9/10</h1>
+                    <p class="text-xs text-indigo-400 font-medium">Vibe Coding & Web-History Edition</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800 text-xs font-semibold text-slate-300">
+                <a href="#hero" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">Start</a>
+                <a href="#grundlagen" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">Grundlagen</a>
+                <a href="#vergleich" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">1999 vs. Heute</a>
+                <a href="#aufgaben" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition">Aufgaben</a>
+            </div>
+
+            <button onclick="booster()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-semibold text-xs shadow-lg shadow-indigo-500/25 hover:opacity-90 active:scale-95 transition flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>56k Modembrennung</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 space-y-16 pb-24">
+
+        <!-- Hero Section -->
+        <section id="hero" class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
+                    <i data-lucide="history" class="w-3.5 h-3.5"></i> Interaktives Anschauungsmaterial
+                </div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+                    Vom starren Tabellen-Web zur <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">smarten Animation</span>
+                </h2>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                    1999 wurden Webseiten noch mit schweren Tabellen-Monstern, Comic Sans und blinkenden Marquees gebaut. Heute erschaffen wir mit Vibe Coding flüssige, hochmoderne Interfaces.
+                </p>
+            </div>
+
+            <!-- Stats Badge -->
+            <div class="w-full md:w-auto glass-card p-6 rounded-2xl space-y-4 min-w-[240px]">
+                <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
+                    <span class="text-xs text-slate-400">Besucherzähler</span>
+                    <span id="counter" class="font-mono font-bold text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded border border-cyan-800/50 text-sm">000429</span>
+                </div>
+                <div class="space-y-2 text-xs text-slate-300 font-mono">
+                    <div class="flex justify-between"><span>Speed:</span><span class="text-indigo-400">56k V.90</span></div>
+                    <div class="flex justify-between"><span>Optimiert für:</span><span class="text-indigo-400">1080p+ Responsive</span></div>
+                    <div class="flex justify-between"><span>Standard:</span><span class="text-emerald-400">HTML5 / Tailwind</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grundlagen Grid -->
+        <section id="grundlagen" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400"><i data-lucide="book-open" class="w-6 h-6"></i></div>
+                <h3 class="text-2xl font-bold text-white">1.0 HTML Grundlagen</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold">1.1</div>
+                    <h4 class="font-bold text-white text-lg">Was ist HTML?</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        HTML steht für <strong>HyperText Markup Language</strong>. Es ist keine echte Programmiersprache, sondern eine Auszeichnungssprache zur Strukturierung von Dokumenten. Erfunden 1989 von <strong>Tim Berners-Lee</strong>.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">1.2</div>
+                    <h4 class="font-bold text-white text-lg">Das Grundgerüst</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Eine HTML-Datei besteht aus <strong>&lt;HEAD&gt;</strong> (unsichtbare Metadaten) und <strong>&lt;BODY&gt;</strong> (sichtbare Inhalte). 1999 gab es noch keine modernen Footer-Tags!
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center font-bold">1.3</div>
+                    <h4 class="font-bold text-white text-lg">Tags & Syntax</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        HTML steuert Texte über Befehle: Überschriften (<code class="text-pink-400">&lt;h1&gt;</code>), Absätze (<code class="text-pink-400">&lt;p&gt;</code>), Fettdruck (<code class="text-pink-400">&lt;b&gt;</code>) oder den veralteten Lauftext (<code class="text-pink-400">&lt;marquee&gt;</code>).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Comparison Section (1999 vs Today) -->
+        <section id="vergleich" class="glass-panel p-8 rounded-3xl space-y-8 border-indigo-500/20">
+            <div>
+                <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Technologie-Evolution</span>
+                <h3 class="text-2xl font-extrabold text-white mt-1">2.0 Der große Wandel: HTML4 vs. HTML5 + CSS</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 1999 Style -->
+                <div class="p-6 rounded-2xl bg-red-950/20 border border-red-500/20 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">1999 (HTML4)</span>
+                        <i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex gap-2">❌ <strong>Layout-Tabellen:</strong> Ganze Webseiten wurden unübersichtlich in verschachtelten Tabellen aufgebaut.</li>
+                        <li class="flex gap-2">❌ <strong>Inhalt & Styling vermischt:</strong> Farben & Schriften wurden direkt im Tag angegeben (z.B. <code class="text-red-300">&lt;font color="red"&gt;</code>).</li>
+                        <li class="flex gap-2">❌ <strong>Keine Animationen:</strong> Nur ruckelige, blinkende GIFs oder starre Marquee-Texte.</li>
+                    </ul>
+                </div>
+
+                <!-- Modern Style -->
+                <div class="p-6 rounded-2xl bg-emerald-950/20 border border-emerald-500/20 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">2026 (Modernes Vibe Coding)</span>
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex gap-2">✅ <strong>Flexbox & CSS Grid:</strong> Saubere, responsive und flexible Layout-Strukturen für alle Displaygrößen.</li>
+                        <li class="flex gap-2">✅ <strong>Saubere Trennung:</strong> HTML liefert nur die Struktur, CSS steuert zentral das visuelle Design.</li>
+                        <li class="flex gap-2">✅ <strong>Geschmeidige Motion Animationen:</strong> Flüssiges Scrollen, Hover-Effekte und organische Interaktionen.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tasks Section -->
+        <section id="aufgaben" class="glass-panel p-8 rounded-3xl space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="p-2 rounded-xl bg-amber-500/10 text-amber-400"><i data-lucide="check-square" class="w-6 h-6"></i></div>
+                <h3 class="text-2xl font-bold text-white">3.0 Arbeitsaufträge für die Klasse 9/10</h3>
+            </div>
+
+            <div class="space-y-4 text-sm">
+                <div class="glass-card p-5 rounded-xl flex gap-4 items-start">
+                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">1</span>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Quellcode-Analyse mit den Developer Tools</h4>
+                        <p class="text-xs text-slate-300">Drücke <code class="bg-slate-800 px-1.5 py-0.5 rounded text-amber-300 font-mono">F12</code> in deinem Browser und öffne die Inspektor-Ansicht. Untersuche, wie diese Seite aufgebaut ist.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl flex gap-4 items-start">
+                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">2</span>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Fehlersuche: Veraltete HTML-Tags</h4>
+                        <p class="text-xs text-slate-300">Nenne 3 Tags aus dem originalen 1999er-Unterrichtsmaterial, die heute als veraltet gelten (z.B. <code class="text-amber-300 font-mono">&lt;marquee&gt;</code>, <code class="text-amber-300 font-mono">&lt;font&gt;</code>, <code class="text-amber-300 font-mono">&lt;center&gt;</code>).</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl flex gap-4 items-start">
+                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">3</span>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Praxis: Farbanpassung</h4>
+                        <p class="text-xs text-slate-300">Öffne den Code im Editor und tausche die Klasse <code class="text-cyan-400 font-mono">from-indigo-500</code> z.B. gegen <code class="text-emerald-400 font-mono">from-emerald-500</code> aus, um die Akzentfarbe deiner Webseite komplett zu verändern.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
+        © 1999 - 2026 Informatikunterricht Klasse 9/10 | Re-Designed mit Vibe Coding
+    </footer>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // Counter Script
+        let c = 429;
+        setInterval(() => {
+            c += Math.floor(Math.random() * 2) + 1;
+            document.getElementById('counter').innerText = String(c).padStart(6, '0');
+        }, 3500);
+
+        // Booster Confetti
+        function booster() {
+            confetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.7 }
+            });
+        }
+    </script>
+</body>
+</html>
